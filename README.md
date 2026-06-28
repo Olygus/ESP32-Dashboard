@@ -25,7 +25,7 @@ this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth t
 * **Inputs**: 2 physical buttons for Wake and Page Cycle functionality.
 * **Misc**: Connecting wires, an optional breadboard, double-sided tape, and a micro-USB battery.
 
-![ESP32 Pinout Diagram](https://qqtrading.com.my/image/catalog/Screenshot%202025-08-03%20213906.png)
+![ESP32 Pinout Diagram](https://imgv2-2-f.scribdassets.com/img/document/601922316/original/466bb646b5/1?v=1)
 
 ## Key Features & Architecture
 
