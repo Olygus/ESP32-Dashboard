@@ -1,10 +1,12 @@
 # ESP32 dashboard
+<div align="center">
 
 ![ESP32](https://img.shields.io/badge/ESP32-black?style=flat&logo=espressif&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Bluetooth](https://img.shields.io/badge/Bluetooth-0082FC?style=flat&logo=bluetooth&logoColor=white)
+</div>
 this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth to show system statistics. The device receives periodic status updates from the laptop machine and displays the information across two OLED screens.
 
 ## Table of Contents
