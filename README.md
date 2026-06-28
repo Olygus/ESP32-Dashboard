@@ -1,10 +1,14 @@
 ---
 tags: [esp32, bluetooth, linux, dashboard, oled, system-monitor, cpp, python]
 ---
+![ESP32](https://img.shields.io/badge/ESP32-black?style=flat&logo=espressif&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+![Bluetooth](https://img.shields.io/badge/Bluetooth-0082FC?style=flat&logo=bluetooth&logoColor=white)
+# ESP32 dashboard
 
-# ESP32-Dashboard
-
-An ESP32-based display system that communicates with Linux-based laptops over Bluetooth to show system statistics. The device receives periodic status updates from the host machine and displays the information across two distinct OLED screens.
+this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth to show system statistics. The device receives periodic status updates from the laptop machine and displays the information across two OLED screens.
 
 ## Table of Contents
 
@@ -17,16 +21,16 @@ An ESP32-based display system that communicates with Linux-based laptops over Bl
 ## Hardware Requirements
 
 * **Microcontroller**: ESP32 DevKit V1 (flashed with C++).
-* **Displays**: One 128x64 OLED using the `sh1107` library and one 128x32 OLED using the `SSD1306` library.
+* **Displays**: One 128x64 OLED using the `sh1107` library (if you are using an SSD1306 oled screen, make sure you change the libraries for it) and one 128x32 OLED using the `SSD1306` library.
 * **Inputs**: 2 physical buttons for Wake and Page Cycle functionality.
 * **Misc**: Connecting wires, an optional breadboard, double-sided tape, and a micro-USB battery.
 
 ## Key Features & Architecture
 
 * **Dual I2C Buses**: Avoids display conflicts by explicitly passing hardware identifier instances (`0` and `1`) during object construction, separating the main and stylus display buses. 
-* **Instant Wake**: Utilizes `esp_light_sleep_start()` instead of deep sleep. This keeps the internal RAM and BLE connection active while saving power, allowing the display to wake and update instantly on button press.
-* **Readable Payloads**: Drops compressed binary frames in favor of raw, human-readable JSON packages for easier debugging and data transfer.
-* **Linux Host Daemon**: The backend runs as a background systemd service using a Python Bleak monitor to grab battery, uptime, and stylus data.
+* **Instant Wake**: Utilizes `esp_light_sleep_start()` instead of deep sleep. This keeps the internal RAM and BLE connection active while saving power, allowing the display to wake and update instantly on button press avoiding the tedious reconection.
+* **Readable Payloads**: the laptop drops compressed binary frames in favor of raw, human readable JSON packages for easier debugging and data transfer. Shoutout to my boi Jason
+* **Linux Host Daemon**: The backend runs as a background systemd service (I am happy to change this if anyone with the knowledge is willing to help me) using a Python Bleak monitor to grab battery, uptime, and stylus data.
 
 ## Repository Structure
 
@@ -70,7 +74,7 @@ pio run --target upload
 
 ### 2. Install the Python Host Service
 
-To avoid externally-managed-environment errors on modern Linux distributions (like Arch Linux), the host script runs inside an isolated virtual environment.
+To avoid any externally managed environment errors on most modern Linux distributions (like Arch Linux), the host script runs inside an isolated virtual environment so you are safer. (remember to disable this when you decide to stop using it because it will stay there indefinitely)
 
 ```bash
 # Create application directory and copy service files
@@ -85,7 +89,7 @@ python3 -m venv ~/.local/share/esp32-status/venv
 
 ### 3. Enable the systemd Service
 
-Configure the daemon to run automatically in the background for your user session.
+Configure the daemon to run automatically in the background for your user session. (make sure to remember to kill it once you deice to stop using this)
 
 ```bash
 # Copy systemd service unit file
@@ -103,7 +107,7 @@ journalctl --user -u esp32-status -f
 
 ## Data Payload Format
 
-Data is transferred from the Linux machine to the ESP32 formatted as a standard JSON string.
+Data is transferred from the Linux machine to the ESP32 formatted as a standard JSON strings .
 
 ```json
 {
