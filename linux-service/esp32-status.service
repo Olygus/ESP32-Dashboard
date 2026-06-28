@@ -1,0 +1,21 @@
+[Unit]
+Description=ESP32 Bluetooth Status Display
+Documentation=https://github.com/youruser/ESP32-Dashboard
+After=bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+# Uses the venv created during install — see INSTALL.md
+ExecStart=%h/.local/share/esp32-status/venv/bin/python3 \
+    %h/.local/share/esp32-status/esp32_status.py \
+    --config %h/.local/share/esp32-status/config.toml
+WorkingDirectory=%h/.local/share/esp32-status
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

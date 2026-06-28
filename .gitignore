@@ -1,0 +1,17 @@
+# these are depandant on your device and will be generated automatically
+.pio/
+.pioenvs/
+.pio/libdeps/
+
+# for me there is python because i use all my code in 1 enviroment
+__pycache__/
+*.pyc
+
+# build artifacts
+*.bin
+*.elf
+*.map
+
+# if you thought i would just apload my wifi and other passwords to github, think again
+config.toml
+*.local.toml
