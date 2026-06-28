@@ -24,7 +24,6 @@ this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth t
 * **Displays**: One 128x64 OLED using the `sh1107` library (if you are using an SSD1306 oled screen, make sure you change the libraries for it) and one 128x32 OLED using the `SSD1306` library.
 * **Inputs**: 2 physical buttons for Wake and Page Cycle functionality.
 * **Misc**: Connecting wires, an optional breadboard, double-sided tape, and a micro-USB battery.
-
 ![ESP32 Pinout Diagram](https://imgv2-2-f.scribdassets.com/img/document/601922316/original/466bb646b5/1?v=1)
 
 ## Key Features & Architecture
