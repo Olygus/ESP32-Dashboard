@@ -7,7 +7,6 @@
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Bluetooth](https://img.shields.io/badge/Bluetooth-0082FC?style=flat&logo=bluetooth&logoColor=white)
 
-![ESP32 Pinout Diagram](https://qqtrading.com.my/image/catalog/Screenshot%202025-08-03%20213906.png)
 </div>
 this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth to show system statistics. The device receives periodic status updates from the laptop machine and displays the information across two OLED screens.
 
@@ -25,6 +24,8 @@ this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth t
 * **Displays**: One 128x64 OLED using the `sh1107` library (if you are using an SSD1306 oled screen, make sure you change the libraries for it) and one 128x32 OLED using the `SSD1306` library.
 * **Inputs**: 2 physical buttons for Wake and Page Cycle functionality.
 * **Misc**: Connecting wires, an optional breadboard, double-sided tape, and a micro-USB battery.
+
+![ESP32 Pinout Diagram](https://qqtrading.com.my/image/catalog/Screenshot%202025-08-03%20213906.png)
 
 ## Key Features & Architecture
 
