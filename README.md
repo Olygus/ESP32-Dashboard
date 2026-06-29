@@ -32,6 +32,60 @@ this is an ESP32 dashboard that communicates with Linux laptops over Bluetooth t
 * **Instant Wake**: Utilizes `esp_light_sleep_start()` instead of deep sleep. This keeps the internal RAM and BLE connection active while saving power, allowing the display to wake and update instantly on button press avoiding the tedious reconection.
 * **Readable Payloads**: the laptop drops compressed binary frames in favor of raw, human readable JSON packages for easier debugging and data transfer. Shoutout to my boi Jason
 * **Linux Host Daemon**: The backend runs as a background systemd service (I am happy to change this if anyone with the knowledge is willing to help me) using a Python Bleak monitor to grab battery, uptime, and stylus data.
+```mermaid 
+flowchart TD  
+
+ESP32 ~~~ BTN1 ~~~ BTN2
+ESP32 ~~~ O1 ~~~ O2
+GND --- GND1 --- GND2 
+Ban --- b1g --- b2g
+
+VCC --- VCC1 --- VCC2
+GPIO12 --- b1v
+GPIO13 --- b2v
+
+GPIO21 --- SDA1
+GPIO22 --- SCl1
+
+GPIO16 --- SDA2
+GPIO17 --- SCl2
+
+subgraph ESP32
+ GPIO21[GPIO 21]
+ GPIO22[GPIO 22]
+ GPIO16[GPIO 16]
+ GPIO17[GPIO 17]
+ GPIO12[GPIO 12]
+ GPIO13[GPIO 13]
+ VCC 
+ GND
+ Ban[GND]
+end
+
+subgraph O1[128x64-OLED]
+ VCC1[VCC]
+ GND1[GND]
+ SDA1[SDA]
+ SCl1[SCL]
+end
+
+subgraph O2[128x32-OLED]
+ VCC2[VCC]
+ GND2[GND]
+ SDA2[SDA]
+ SCl2[SCL]
+end
+
+subgraph BTN1
+ b1g[pin 1] 
+ b1v[pin 2]
+end
+
+subgraph BTN2
+ b2g[pin 1]
+ b2v[pin 2]
+end
+```
 
 ## Repository Structure
 
