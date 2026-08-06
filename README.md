@@ -38,7 +38,8 @@ flowchart TD
 ESP32 ~~~ BTN1 ~~~ BTN2
 ESP32 ~~~ O1 ~~~ O2
 GND --- GND1 --- GND2 
-Ban --- b1g --- b2g
+Ban --- b1g 
+Ban --- b2g
 
 VCC --- VCC1 --- VCC2
 GPIO12 --- b1v
